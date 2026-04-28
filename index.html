@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 på rad</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./gameLogic.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <main class="main-content">
+        <section class="hero">
+            <div class="container">
+                <h1>4 på rad</h1>
+                <p>Spill 4 på rad med vennene dine!</p>
+
+                <div class="gameBtns">
+                    <button onclick="start()" class="btn level-btn">Start</button>
+                    <!-- <button onclick="restartGame()" id="restart" class="btn level-btn">Restart</button> -->
+
+                </div>
+            </div>
+        </section>
+
+        <section class="game-container">
+            <div id="grid-4">
+            </div>
+            <button onclick="restartGame()" id="restart" class="btn level-btn">Restart</button>
+        </section>
+
+        <div id="message-container">
+            <div class="messageDisplay">
+                <h1 id="winDisplay"></h1>
+                <button onclick="restartGame()" id="restart" class="btn level-btn">Play Again?</button>
+                <button id="closeBtn" onclick="closeMsg()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
