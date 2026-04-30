@@ -15,12 +15,15 @@ const players = {
 }
 
 const hero = document.querySelector('.hero')
-const gameContainer =document.querySelector('.game-container')
+const gameContainer = document.querySelector('.game-container')
 const gameGrid = document.getElementById('grid-4');
 const msgContainer = document.getElementById('message-container')
 const msgDisplay = document.querySelector('.messageDisplay')
 const winDisplay = document.getElementById('winDisplay')
 const closeBtn = document.getElementById('closeBtn')
+const pOne = document.querySelector('.pOne')
+const pTwo = document.querySelector('.pTwo')
+const slider = document.querySelector('.slider');
 
 let currentPlayer = players.player1;
 let gameWon = false;
@@ -42,6 +45,8 @@ function restartGame() {
     currentPlayer = players.player1;
     gameWon = false;
     tileCounter = 0;
+
+    playerIndication(pOne, currentPlayer.color);
     rendering();
 
 }
@@ -65,6 +70,8 @@ function start() {
         hero.classList.add('inactive')
         gameContainer.classList.add('visible')
 
+
+        playerIndication(pOne, currentPlayer.color);
         rendering();
     }
     else {
@@ -143,26 +150,34 @@ function placer(event) {
 function switchPlayer() {
     if (currentPlayer.idTag == 1) {
         currentPlayer = players.player2;
+        playerIndication(pTwo, currentPlayer.color);
     }
     else {
         currentPlayer = players.player1;
+        playerIndication(pOne, currentPlayer.color);
     }
 }
 
 function checkWin(landingRow, x) {
 
-
-    /* Horisontal axis */
     let comboCounter = 1;
     let winner = currentPlayer
+    let comboLeft = null
+    let comboRight = null
+    let comboBottom = null
 
-    /* y+ */
-    for (let i = x + 1; i <= 6; i++) {
+    /* Horisontal axis */
+
+    /* x- */
+    for (let i = x - 1; i >= 0; i--) {
         let checkValue = board[landingRow][i];
+
         if (checkValue === currentPlayer.idTag) {
             comboCounter += 1;
         }
         else {
+            comboLeft = comboCounter - 1;
+            /* console.log(comboLeft + " to the left") */
             break
         }
     }
@@ -174,14 +189,16 @@ function checkWin(landingRow, x) {
         return
     }
 
-    /* y- */
-    for (let i = x - 1; i >= 0; i--) {
+    /* x+ */
+    for (let i = x + 1; i <= 6; i++) {
         let checkValue = board[landingRow][i];
 
         if (checkValue === currentPlayer.idTag) {
             comboCounter += 1;
         }
         else {
+            comboRight = comboCounter - comboLeft - 1;
+            /* console.log(comboRight + ' to the right') */
             break
         }
     }
@@ -203,6 +220,8 @@ function checkWin(landingRow, x) {
             comboCounter += 1;
         }
         else {
+            /* comboBottom = comboCounter-1
+            console.log(comboBottom+' on the bottom') */
             break
         }
     }
@@ -306,6 +325,19 @@ function popUp(message) {
     }, 750)
 }
 
-function closeMsg(){
+function closeMsg() {
     msgContainer.classList.remove('active');
+}
+
+function playerIndication(player, color) {
+    const rect = player.getBoundingClientRect();
+    const parentRect = player.parentElement.getBoundingClientRect();
+
+    const centerX = rect.left - parentRect.left + rect.width / 2;
+    const bottomY = rect.bottom - parentRect.top;
+    slider.style.left = centerX + "px";
+    slider.style.top = bottomY + "px";
+    slider.style.transform = "translateX(-50%)";
+    slider.style.backgroundColor = color;
+
 }

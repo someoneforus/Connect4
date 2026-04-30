@@ -30,13 +30,20 @@
         <section class="game-container">
             <div id="grid-4">
             </div>
-            <button onclick="restartGame()" id="restart" class="btn level-btn">Restart</button>
+            <div class="info-container">
+                <div class="playerIndicater">
+                    <h2 class="pOne">P1</h2>
+                    <h2 class="pTwo">P2</h2>
+                    <div class="slider"></div>
+                </div>
+                <button onclick="restartGame()" id="restart" class="btn level-btn"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+            </div>
         </section>
 
         <div id="message-container">
             <div class="messageDisplay">
                 <h1 id="winDisplay"></h1>
-                <button onclick="restartGame()" id="restart" class="btn level-btn">Play Again?</button>
+                <button onclick="restartGame()" id="restart" class="btn level-btn"><i class="fa-solid fa-arrow-rotate-left"></i></button>
                 <button id="closeBtn" onclick="closeMsg()"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>
