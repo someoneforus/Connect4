@@ -29,6 +29,7 @@ let currentPlayer = players.player1;
 let gameWon = false;
 let gameStarted = false;
 let tileCounter = 0;
+let onePlayerMode = null;
 
 function restartGame() {
     msgContainer.classList.remove('active');
@@ -51,7 +52,9 @@ function restartGame() {
 
 }
 
-function start() {
+function start(gameMode) {
+
+    onePlayerMode = gameMode
 
     if (gameStarted === false) {
         gameStarted = true;
@@ -79,72 +82,97 @@ function start() {
     }
 }
 
-function rendering() {
 
-    board.forEach((row, rowIndex) => {
-        row.forEach((cell, colIndex) => {
-            tile = document.querySelector(`[data-row="${rowIndex}"][data-col="${colIndex}"]`);
 
-            if (cell === 1) {
-                tile.classList.add('red');
-            }
-            else if (cell === 2) {
-                tile.classList.add('blue');
-            }
-            else if (cell === 0) {
-                tile.classList.remove('red');
-                tile.classList.remove('blue');
-            }
-        })
-    })
-}
-
-function animation(landingRow, x) {
-    tile = document.querySelector(`[data-row="${landingRow}"][data-col="${x}"]`);
-    tile.classList.add('css-fallAnimation')
-    tile.addEventListener('animationend', () => {
-        tile.classList.remove('css-fallAnimation')
-    })
-}
 
 function placer(event) {
+    let col = parseInt(event.target.dataset.col);
+
     if (gameWon === true) {
         return
     }
 
-    let y = parseInt(event.target.dataset.row);
-    let x = parseInt(event.target.dataset.col);
-    let landingRow = null;
+    let landingRow = dropPiece(col, currentPlayer)
 
-
-    for (let i = 5; i >= 0; i--) {
-        let checkValue = board[i][x];
-        if (checkValue === 0) {
-            landingRow = i
-            break
-        }
-    }
     if (landingRow === null) {
-        /* popUp('this colomn is full') */
         /* add shake animation */
         alert('this colomn is full')
         return;
     }
 
-    board[landingRow][x] = currentPlayer.idTag;
-
-    checkWin(landingRow, x);
     tileCounter += 1
+
+    checkWin(landingRow, col);
+
     if (tileCounter === 42 && gameWon === false) {
 
         rendering();
-        animation(landingRow, x);
+        animation(landingRow, col);
         popUp('The game ends in a draw.')
         return;
     }
+
     rendering();
-    animation(landingRow, x);
+    animation(landingRow, col);
     switchPlayer();
+    if (onePlayerMode) {
+        console.log(board.map(r => r.join(' ')).join('\n'));
+        let optimalCol = bestMove(7)
+        setTimeout(() => {
+        placerAi(optimalCol)
+    }, 1000)
+    }
+}
+
+function placerAi(column) {
+    let col = column
+
+    if (gameWon === true) {
+        return
+    }
+
+    let landingRow = dropPiece(col, currentPlayer)
+    if (landingRow === null) return;
+
+
+    tileCounter += 1
+
+    checkWin(landingRow, col);
+
+    if (tileCounter === 42 && gameWon === false) {
+
+        rendering();
+        animation(landingRow, col);
+        popUp('The game ends in a draw.')
+        return;
+    }
+    
+    console.log(weightedGrid.map(r => r.join(' ')).join('\n'));
+    console.log(board.map(r => r.join(' ')).join('\n'));
+    rendering();
+    animation(landingRow, col);
+    switchPlayer();
+}
+
+function dropPiece(col, player) {
+    let landingRow = null;
+
+    for (let i = 5; i >= 0; i--) {
+        let checkValue = board[i][col];
+        if (checkValue === 0) {
+            landingRow = i
+            break
+        }
+    }
+
+    if (landingRow === null) return null
+
+    board[landingRow][col] = player.idTag;
+    return landingRow
+}
+
+function undropPiece(landingRow, col) {
+    board[landingRow][col] = 0
 }
 
 function switchPlayer() {
@@ -314,30 +342,4 @@ function checkWin(landingRow, x) {
         popUp(`Player ${String(winner.idTag)} wins`)
         return
     }
-}
-
-
-
-function popUp(message) {
-    setTimeout(() => {
-        msgContainer.classList.add('active');
-        winDisplay.innerHTML = message;
-    }, 750)
-}
-
-function closeMsg() {
-    msgContainer.classList.remove('active');
-}
-
-function playerIndication(player, color) {
-    const rect = player.getBoundingClientRect();
-    const parentRect = player.parentElement.getBoundingClientRect();
-
-    const centerX = rect.left - parentRect.left + rect.width / 2;
-    const bottomY = rect.bottom - parentRect.top;
-    slider.style.left = centerX + "px";
-    slider.style.top = bottomY + "px";
-    slider.style.transform = "translateX(-50%)";
-    slider.style.backgroundColor = color;
-
 }

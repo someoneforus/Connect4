@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4 på rad</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./minimax.js" defer></script>
     <script src="./gameLogic.js" defer></script>
+    <script src="./visual.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 
@@ -20,9 +22,8 @@
                 <p>Spill 4 på rad med vennene dine!</p>
 
                 <div class="gameBtns">
-                    <button onclick="start()" class="btn level-btn">Start</button>
-                    <!-- <button onclick="restartGame()" id="restart" class="btn level-btn">Restart</button> -->
-
+                    <button onclick="start(true)" class="btn level-btn"><i class="fa-regular fa-user"></i></button>
+                    <button onclick="start(false)" class="btn level-btn"><i class="fa-regular fa-user"></i> <i class="fa-regular fa-user"></i></button>
                 </div>
             </div>
         </section>
@@ -36,14 +37,16 @@
                     <h2 class="pTwo">P2</h2>
                     <div class="slider"></div>
                 </div>
-                <button onclick="restartGame()" id="restart" class="btn level-btn"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                <button onclick="restartGame()" id="restart" class="btn level-btn"><i
+                        class="fa-solid fa-arrow-rotate-left"></i></button>
             </div>
         </section>
 
         <div id="message-container">
             <div class="messageDisplay">
                 <h1 id="winDisplay"></h1>
-                <button onclick="restartGame()" id="restart" class="btn level-btn"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+                <button onclick="restartGame()" id="restart" class="btn level-btn"><i
+                        class="fa-solid fa-arrow-rotate-left"></i></button>
                 <button id="closeBtn" onclick="closeMsg()"><i class="fa-solid fa-xmark"></i></button>
             </div>
         </div>

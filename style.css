@@ -144,7 +144,7 @@ img {
   transition: transform 0.6s cubic-bezier(0.2, 1, 1, 1);
 }
 
-#restart:hover .fa-arrow-rotate-left{
+#restart:hover .fa-arrow-rotate-left {
   transform: rotate(-360deg);
 }
 
