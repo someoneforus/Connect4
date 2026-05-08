@@ -320,3 +320,29 @@ img {
 #message-container.active .messageDisplay {
   opacity: 1;
 }
+
+/* Home screen */
+
+.level-btn{
+  display: flex;
+  gap: 0rem;
+  transition: all 0.4s cubic-bezier(0.2, 1, 1, 1);
+}
+
+.level-btn span{
+
+  display: flex;
+justify-content: center;
+align-items: center;
+
+  height: 23px;
+  transition: all 0.4s cubic-bezier(0.2, 1, 1, 1);
+  opacity: 0;
+  margin: 0;
+
+}
+
+.level-btn:hover span{
+  opacity: 1;
+  margin: 0 1rem;
+}

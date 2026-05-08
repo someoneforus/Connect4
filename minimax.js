@@ -167,6 +167,7 @@ function getValidCols() {
     return validCols
 }
 
+/* player1 plays as the maximizer and player2 plays as the minimizer*/
 
 function miniMax(depth, isMaximizing, alpha, beta) {
     let bestScore = null
@@ -182,18 +183,12 @@ function miniMax(depth, isMaximizing, alpha, beta) {
 
         for (let i = 0; i < validCols.length; i++) {
             let col = validCols[i]
-            let landingRow = dropPiece(col, players.player2);
+            let landingRow = dropPiece(col, players.player1);
             if (landingRow === null) continue
-            if (checkWinPure(landingRow, col, players.player2)) {
+            if (checkWinPure(landingRow, col, players.player1)) {
                 undropPiece(landingRow, col);
                 return Infinity
             }
-
-            if (checkWinPure(landingRow, col, players.player1)) {
-                undropPiece(landingRow, col);
-                return -Infinity
-            }
-
 
             let score = miniMax(depth - 1, false, alpha, beta);
             undropPiece(landingRow, col);
@@ -209,16 +204,12 @@ function miniMax(depth, isMaximizing, alpha, beta) {
 
         for (let i = 0; i < validCols.length; i++) {
             let col = validCols[i]
-            let landingRow = dropPiece(col, players.player1);
+            let landingRow = dropPiece(col, players.player2);
             if (landingRow === null) continue
 
-            if (checkWinPure(landingRow, col, players.player1)) {
-                undropPiece(landingRow, col);
-                return -Infinity
-            }
             if (checkWinPure(landingRow, col, players.player2)) {
                 undropPiece(landingRow, col);
-                return Infinity
+                return -Infinity
             }
 
             score = miniMax(depth - 1, true, alpha, beta);
@@ -232,10 +223,10 @@ function miniMax(depth, isMaximizing, alpha, beta) {
 }
 
 function bestMove(depth) {
-    let bestCol = 3
     let bestScore = Infinity
     let score = 0
     let validCols = getValidCols();
+    let bestCol = validCols[0]
 
     for (let i = 0; i < validCols.length; i++) {
         let col = validCols[i]
@@ -271,7 +262,7 @@ function bestMove(depth) {
             bestCol = col
         }
     };
-    console.log('validCols:', validCols, 'scores:', /* add score logging */);
+    console.log('validCols:', validCols);
     console.log('bestCol:', bestCol, 'bestScore:', bestScore);
     return bestCol
 }
