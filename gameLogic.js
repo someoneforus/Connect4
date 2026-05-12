@@ -10,8 +10,8 @@ let board = [
 
 
 const players = {
-    player1: { color: 'red', idTag: 1 },
-    player2: { color: 'blue', idTag: 2 }
+    player1: { color: '#AE2012', idTag: 1 },
+    player2: { color: '#EE9B00', idTag: 2 }
 }
 
 const hero = document.querySelector('.hero')
@@ -88,6 +88,10 @@ function start(gameMode) {
 function placer(event) {
     let col = parseInt(event.target.dataset.col);
 
+    if (onePlayerMode === true && currentPlayer == players.player2) {
+        return
+    }
+
     if (gameWon === true) {
         return
     }
@@ -119,8 +123,8 @@ function placer(event) {
         console.log(board.map(r => r.join(' ')).join('\n'));
         let optimalCol = bestMove(7)
         setTimeout(() => {
-        placerAi(optimalCol)
-    }, 1000)
+            placerAi(optimalCol)
+        }, 1000)
     }
 }
 
@@ -146,7 +150,7 @@ function placerAi(column) {
         popUp('The game ends in a draw.')
         return;
     }
-    
+
     console.log(weightedGrid.map(r => r.join(' ')).join('\n'));
     console.log(board.map(r => r.join(' ')).join('\n'));
     rendering();

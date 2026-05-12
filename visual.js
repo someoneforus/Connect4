@@ -7,11 +7,11 @@ function rendering() {
                 tile.classList.add('red');
             }
             else if (cell === 2) {
-                tile.classList.add('blue');
+                tile.classList.add('yellow');
             }
             else if (cell === 0) {
                 tile.classList.remove('red');
-                tile.classList.remove('blue');
+                tile.classList.remove('yellow');
             }
         })
     })
