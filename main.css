@@ -4,6 +4,7 @@
     --accent: #E9D8A6;
     --accent-yellow: #EE9B00;
     --accent-red: #AE2012;
+    --logo-text:#94D2BD;
 }
 
 html {
@@ -17,55 +18,31 @@ section {
 
 
 /* Hero section --> */
-.hero {
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
 
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.title {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.logo {
     opacity: 0;
-    transition: opacity 0.5s cubic-bezier(0.20, 1, 1, 1);
-    color: #94D2BD;
 }
 
-.title.active {
+.logo.active {
     opacity: 1;
 }
 
-
-#heroTile {
-    width: 3.5rem;
-    height: 3.5rem;
-    transition: scale ease 2s;
-}
-
-#heroTile.gameActive {
-    scale: 65;
-}
-
 .heroGrid {
-    padding: 2rem 2rem 0.5rem 2rem;
-
-    background-color: #005F73;
     width: min(60vw, 1000px);
+    padding: min(2vw,2rem);
+    border-radius: 2rem;
+    background-color: var(--secondary);
+
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     place-items: center;
-
-    border-radius: 2rem 2rem 0 0;
-
     
+    transform: translateY(150%);
+    transition: transform 1s cubic-bezier(0.20, 1, 1, 1);
+}
+
+.heroGrid.active{
+    transform: translateY(0);
 }
 
 .heroGrid .tile {
@@ -94,7 +71,7 @@ section {
 #htp {
     width: 100%;
     height: 100vh;
-    background-color: #E9D8A6;
+    background-color: var(--accent);
 }
 
 /* <-- How to play*/

@@ -1,6 +1,12 @@
+const logo = document.querySelector('.logo');
+
 window.onload = ()=>{
     heroTile.classList.remove('gameActive')
 }
+
+logo.addEventListener('click',()=>{
+    window.location.href = './index.html'
+})
 
 function rendering() {
     board.forEach((row, rowIndex) => {

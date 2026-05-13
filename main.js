@@ -1,26 +1,18 @@
-const heroTile = document.getElementById('heroTile')
-const title = document.querySelector('.title')
-const playTiles = document.querySelectorAll('.playTile')
-const lmTiles = document.querySelectorAll('.lmTile')
-const htpSection = document.getElementById('htp')
+
+const heroTile = document.getElementById('heroTile');
+const playTiles = document.querySelectorAll('.playTile');
+const lmTiles = document.querySelectorAll('.lmTile');
+const htpSection = document.getElementById('htp');
+const heroGrid=document.querySelector('.heroGrid');
 
 window.onload = () => {
-    title.classList.add('active')
+    logo.classList.add('active')
+    heroGrid.classList.add('active')
 
     heroTile.classList.remove('introFallAnimation');
     void heroTile.offsetWidth;
     heroTile.classList.add('introFallAnimation');
 }
-
-heroTile.addEventListener('click', () => {
-    heroTile.classList.toggle('gameActive');
-    setTimeout(() => {
-        window.location.href = './game.html'
-    }, 2200);
-});
-
-/* Maybe remove the heroTile animation */
-
 
 
 playTiles.forEach((playTile) => {
@@ -37,10 +29,12 @@ playTiles.forEach((playTile) => {
     });
 
     playTile.addEventListener('click', () => {
-        heroTile.classList.toggle('gameActive')
+        heroGrid.classList.remove('active');
+        heroTile.classList.toggle('gameActive');
         setTimeout(() => {
             window.location.href = './game.html'
-        }, 2200)
+            heroTile.classList.remove('gameActive')
+        }, 1200)
     });
 });
 
