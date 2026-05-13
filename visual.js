@@ -1,3 +1,7 @@
+window.onload = ()=>{
+    heroTile.classList.remove('gameActive')
+}
+
 function rendering() {
     board.forEach((row, rowIndex) => {
         row.forEach((cell, colIndex) => {
