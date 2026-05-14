@@ -9,7 +9,7 @@
   --text-muted: #adb5bd;
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
-  --logo-text:#94D2BD;
+  --logo-text: #94D2BD;
 }
 
 * {
@@ -50,7 +50,7 @@ img {
 }
 
 /* Nav --> */
-nav{
+nav {
   padding: 1rem 10rem;
   display: flex;
   justify-content: flex-end;
@@ -60,12 +60,40 @@ nav{
   background-color: rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
+  z-index: 100;
 }
 
-nav a{
+nav a {
+  width: max-content;
   font-size: 1.5rem;
   color: var(--logo-text);
   text-decoration: none;
+  position: relative;
+  transition: scale 0.3s cubic-bezier(0.20, 1, 1, 1);
+}
+
+nav a:hover,
+.logo:hover {
+  scale: 1.1;
+}
+
+nav a::after {
+  content: '';
+  background-color: #EE9B00;
+  height: 3px;
+  width: 0;
+  border-radius: 2px;
+
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  transition: width 0.3s cubic-bezier(0.20, 1, 1, 1);
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 .logo {
@@ -76,15 +104,15 @@ nav a{
   margin-right: auto;
 
   opacity: 1;
-  transition: opacity 0.5s cubic-bezier(0.20, 1, 1, 1);
+  transition: opacity 0.5s cubic-bezier(0.20, 1, 1, 1), scale 0.3s cubic-bezier(0.20, 1, 1, 1);
   color: #94D2BD;
 
   cursor: pointer;
 }
 
-.logo>*{
-    font-size: 3rem;
-    font-weight: 600;
+.logo>* {
+  font-size: 3rem;
+  font-weight: 600;
 }
 
 .logo.active {
@@ -92,84 +120,25 @@ nav a{
 }
 /* <-- Nav */
 
-/* --- HERO SECTION --- */
+/* Btns --> */
 
-/* Copy from main -->*/
-.hero {
-  width: 100%;
-  min-height: 100dvh;
-  position: relative;
-  overflow: hidden;
-
-  text-align: center;
+button{
+  width: max-content;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-#heroTile {
-    width: 2.5rem;
-    height: 2.5rem;
-    transition:width ease 1.5s,height ease 1.5s, scale ease 1.5s;
-    cursor: pointer;
-}
-
-#heroTile.gameActive {
-    width: 100vw;
-    height: 100vw;
-    scale: 5;
-}
-
-/* <-- Copy from main */
-
-
-.hero h1 {
-  font-size: 4.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-}
-
-.hero.inactive {
-  display: none;
-}
-
-
-/* --- GAME SECTION --- */
-.game-container {
-  display: flex;
-  /* padding: 0 0 2rem; */
-  gap: 5rem;
-  justify-content: space-around;
-  align-items: center;
-
-  position: relative;
-
-  opacity: 0;
-
-  transition: opacity ease-in 0.3s;
-}
-
-.game-container .text-box {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.game-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.game-container p {
-  color: var(--text-muted);
-  font-size: 1.1rem;
 }
 
 .gameBtns {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 4rem;
+  padding: 2rem;
+}
+.gameBtns i{
+  font-size: 1.5rem;
 }
 
 .btn.level-btn {
@@ -193,7 +162,86 @@ nav a{
   transform: rotate(-360deg);
 }
 
-#grid-4 {
+/* <-- Btns */
+
+/* --- HERO SECTION --- */
+
+/* Copy from main -->*/
+.hero {
+  width: 100%;
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#heroTile {
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: width ease 1.5s, height ease 1.5s, scale ease 1.5s;
+  cursor: pointer;
+}
+
+#heroTile.gameActive {
+  width: 100vw;
+  height: 100vw;
+  scale: 5;
+}
+
+/* <-- Copy from main */
+
+
+.hero h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--logo-text);
+}
+
+.hero.inactive {
+  display: none;
+}
+
+
+/* --- GAME SECTION --- */
+.game-container {
+  display: flex;
+  gap: 5rem;
+  justify-content: space-around;
+  align-items: center;
+
+/*   position: relative; */
+
+  opacity: 0;
+
+  transition: opacity ease-in 0.3s;
+}
+
+.game-container .text-box {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.game-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-container p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+#grid-4,.info-container{
+  display: none;
+}
+
+#grid-4.visible{
   display: grid;
   gap: 0.2rem;
   grid-template-columns: repeat(7, 1fr);
@@ -211,8 +259,8 @@ nav a{
   background-color: #E9D8A6;
   border: black solid 2px;
   border-radius: 50%;
-  width: max(4vw,4rem);
-  height: max(4vw,4rem);
+  width: max(4vw, 4rem);
+  height: max(4vw, 4rem);
 }
 
 .red {
@@ -286,7 +334,7 @@ nav a{
 
 /* info-container */
 
-.info-container {
+.info-container.visible{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -415,6 +463,8 @@ nav a{
   opacity: 0;
   margin: 0;
 
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .level-btn:hover span {

@@ -14,15 +14,16 @@ const players = {
     player2: { color: '#EE9B00', idTag: 2 }
 }
 
-const hero = document.querySelector('.hero')
-const gameContainer = document.querySelector('.game-container')
+const hero = document.querySelector('.hero');
+const gameContainer = document.querySelector('.game-container');
 const gameGrid = document.getElementById('grid-4');
-const msgContainer = document.getElementById('message-container')
-const msgDisplay = document.querySelector('.messageDisplay')
-const winDisplay = document.getElementById('winDisplay')
-const closeBtn = document.getElementById('closeBtn')
-const pOne = document.querySelector('.pOne')
-const pTwo = document.querySelector('.pTwo')
+const infoContainer=document.querySelector('.info-container');
+const msgContainer = document.getElementById('message-container');
+const msgDisplay = document.querySelector('.messageDisplay');
+const winDisplay = document.getElementById('winDisplay');
+const closeBtn = document.getElementById('closeBtn');
+const pOne = document.querySelector('.pOne');
+const pTwo = document.querySelector('.pTwo');
 const slider = document.querySelector('.slider');
 
 let currentPlayer = players.player1;
@@ -71,6 +72,8 @@ function start(gameMode) {
 
         })
         hero.classList.add('inactive')
+        gameGrid.classList.add('visible')
+        infoContainer.classList.add('visible')
         gameContainer.classList.add('visible')
 
 
