@@ -1,15 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap");
 
 :root {
-  --bg-primary:
-    /* #054944 */
-    #001219;
+  --bg-primary: #001219;
   --bg-secondary: #1a233a;
   --text-main: #f8f9fa;
   --text-muted: #adb5bd;
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --logo-text: #94D2BD;
+  --secondary: #005F73;
+  --accent: #E9D8A6;
+  --accent-yellow: #EE9B00;
+  --accent-red: #AE2012;
 }
 
 * {
@@ -215,15 +217,17 @@ button {
 
 /* --- GAME SECTION --- */
 .game-container {
+  margin: 0 auto;
+  width: min(1200px, 80vw);
   display: flex;
-  gap: 5rem;
+  gap: 1rem;
   justify-content: space-around;
   align-items: center;
 
   /*   position: relative; */
 
   opacity: 0;
-
+  /* background-color: #adb5bd; */
   transition: opacity ease-in 0.3s;
 }
 
@@ -265,8 +269,8 @@ button {
   background-color: #E9D8A6;
   border: black solid 2px;
   border-radius: 50%;
-  width: max(4vw, 4rem);
-  height: max(4vw, 4rem);
+  width: clamp(3.3rem, 6vw, 5rem);
+  height: clamp(3.3rem, 6vw, 5rem);
 }
 
 .red {
@@ -346,8 +350,9 @@ button {
   align-items: center;
   gap: 2rem;
   padding: 2rem;
+  border-radius: 1.5rem;
 
-  background-color: cadetblue;
+  background-color: #124559;
 }
 
 .playerIndicater {
@@ -356,10 +361,15 @@ button {
   align-items: center;
   gap: 3rem;
   padding: 1rem;
+  border-radius: 1.5rem;
 
   position: relative;
 
-  background-color: burlywood
+  background-color: #aec3b0;
+}
+
+.playerIndicater h2 {
+  color: #faf0ca;
 }
 
 .slider {
@@ -406,7 +416,7 @@ button {
 
   height: 50vh;
   width: 50vw;
-  background-color: #395a7a;
+  background-color: #94d2bd;
   border-radius: 4rem;
 
   position: relative;
@@ -415,7 +425,7 @@ button {
 #closeBtn {
   position: absolute;
   top: 10%;
-  left: 90%;
+  left: 85%;
 
   background: none;
   border: none;
@@ -475,4 +485,11 @@ button {
 .level-btn:hover span {
   opacity: 1;
   margin: 0 1rem;
+}
+
+@media(width<650px) {
+  .tile {
+    width: clamp(2.3rem, 7vw, 3.3rem);
+    height: clamp(2.3rem, 7vw, 3.3rem);
+  }
 }
