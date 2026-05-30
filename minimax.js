@@ -266,4 +266,3 @@ function bestMove(depth) {
     console.log('bestCol:', bestCol, 'bestScore:', bestScore);
     return bestCol
 }
-

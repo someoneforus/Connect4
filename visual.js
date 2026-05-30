@@ -1,10 +1,11 @@
 const logo = document.querySelector('.logo');
+const animatedTiles = document.querySelectorAll('.animatedTile');
 
-window.onload = ()=>{
+window.onload = () => {
     heroTile.classList.remove('gameActive')
 }
 
-logo.addEventListener('click',()=>{
+logo.addEventListener('click', () => {
     window.location.href = './index.html'
 })
 
@@ -58,3 +59,22 @@ function playerIndication(player, color) {
     slider.style.backgroundColor = color;
 
 }
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add('introFallAnimation');
+            console.log('animating')
+
+            entry.target.addEventListener('animationend', () => {
+                entry.target.classList.remove('introFallAnimation');
+                observer.observe(entry.target);
+            }, { once: true })
+        }
+    })
+});
+
+animatedTiles.forEach((tile) => {
+    observer.observe(tile);
+})

@@ -4,7 +4,7 @@
     --accent: #E9D8A6;
     --accent-yellow: #EE9B00;
     --accent-red: #AE2012;
-    --logo-text:#94D2BD;
+    --logo-text: #94D2BD;
 }
 
 html {
@@ -29,19 +29,19 @@ section {
 
 .heroGrid {
     width: min(60vw, 1000px);
-    padding: min(2vw,2rem);
+    padding: min(2vw, 2rem);
     border-radius: 2rem;
     background-color: var(--secondary);
 
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     place-items: center;
-    
+
     transform: translateY(150%);
     transition: transform 1s cubic-bezier(0.20, 1, 1, 1);
 }
 
-.heroGrid.active{
+.heroGrid.active {
     transform: translateY(0);
 }
 
@@ -49,7 +49,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: max(2vw, 1.5rem);
     font-weight: 900;
 }
 
@@ -68,10 +68,123 @@ section {
 
 /* How to play --> */
 
-#htp {
+#htpSection {
     width: 100%;
     height: 100vh;
     background-color: var(--accent);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.htpContainer {
+    width: 80%;
+    aspect-ratio: 16/9;
+    border-radius: 2rem;
+    background-color: var(--accent-red);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.htpCards {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: transform 0.8s ease-in-out;
+}
+
+.step1.center,
+.step2.center,
+.step3.center {
+    transform: translate(-50%, -50%);
+}
+
+.step1.left,
+.step2.left {
+    transform: translate(-50%, -50%) translateX(-100vw);
+}
+
+.step2.right,
+.step3.right {
+    transform: translate(-50%, -50%) translateX(100vw);
+}
+
+.htps {
+    width: max-content;
+    height: max-content;
+    padding: 1rem;
+
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    place-items: center;
+
+    background-color: var(--secondary);
+    border-radius: 2rem;
+}
+
+.htpCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.htpPlayBtn {
+    font-size: 1.2rem;
+    font-weight: 700;
+
+    background-color: var(--accent-yellow);
+    padding: 1rem;
+    border-radius: 2rem;
+}
+
+.carouselBtn {
+    margin: 0 1rem;
+    width: max-content;
+    border: none;
+
+    background-color: var(--accent-yellow);
+    transition: all ease-in 0.3s;
+}
+
+.carouselBtn:hover {
+    background-color: rgba(190, 124, 0, 1);
+}
+
+.moveLeft.inactive,
+.moveRight.inactive {
+    cursor: not-allowed;
+    background-color: rgba(143, 93, 0, 1);
+}
+
+.carouselBtn i {
+    color: white;
+    font-size: 1.5rem;
+}
+
+@keyframes pulsingGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(214, 40, 40, 0.8),inset 0 0 5px rgba(214, 40, 40, 0.8);
+    }
+
+    50% {
+        box-shadow: 0 0 10px rgba(214, 40, 40, 1),inset 0 0 15px rgba(214, 40, 40, 1);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(214, 40, 40, 0.8),inset 0 0 5px rgba(214, 40, 40, 0.8);
+    }
+}
+
+.pulsing {
+    animation: pulsingGlow 1.5s infinite ease-in-out;
 }
 
 /* <-- How to play*/
