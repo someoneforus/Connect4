@@ -34,7 +34,7 @@ playTiles.forEach((playTile) => {
 
     playTile.addEventListener('click', () => {
         heroGrid.classList.remove('active');
-        heroTile.classList.toggle('gameActive');
+        heroTile.classList.toggle('gameActive');    
         setTimeout(() => {
             window.location.href = './game.html'
             heroTile.classList.remove('gameActive')

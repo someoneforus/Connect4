@@ -1,5 +1,8 @@
 const logo = document.querySelector('.logo');
 const animatedTiles = document.querySelectorAll('.animatedTile');
+const burger = document.querySelector('.burger');
+const pizza = document.querySelector('.pizza');
+const links = document.querySelector('.links');
 
 window.onload = () => {
     heroTile.classList.remove('gameActive')
@@ -77,4 +80,19 @@ const observer = new IntersectionObserver((entries) => {
 
 animatedTiles.forEach((tile) => {
     observer.observe(tile);
-})
+});
+
+burger.addEventListener('click',()=>{
+    pizza.classList.add('active')
+    links.classList.add('active')
+    burger.classList.remove('active')
+    console.log('burger clicked')
+});
+
+pizza.addEventListener('click',()=>{
+    burger.classList.add('active')
+    links.classList.remove('active')
+    pizza.classList.remove('active')
+});
+
+console.log(burger,pizza,links)

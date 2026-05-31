@@ -8,7 +8,7 @@
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --logo-text: #94D2BD;
-  --secondary: #005F73;
+  --secondary: #124559;
   --accent: #E9D8A6;
   --accent-yellow: #EE9B00;
   --accent-red: #AE2012;
@@ -57,16 +57,46 @@ button {
 
 /* Nav --> */
 nav {
-  padding: 1rem 10rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 2rem;
+  padding: 1rem clamp(2rem, 5vw, 10rem);
 
   background-color: rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 100;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+}
+
+.burger-container {
+  font-size: 1.5rem;
+  color: var(--logo-text);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+}
+
+.burger,
+.pizza {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+
+  cursor: pointer;
+  pointer-events: none;
 }
 
 nav a {
@@ -119,10 +149,6 @@ nav a:hover::after {
 .logo>* {
   font-size: 3rem;
   font-weight: 600;
-}
-
-.logo.active {
-  opacity: 1;
 }
 
 /* <-- Nav */
@@ -257,7 +283,7 @@ button {
   grid-template-columns: repeat(7, 1fr);
   padding: 1rem;
 
-  background-color: #005F73;
+  background-color: var(--secondary);
   border-radius: 2rem;
 }
 
@@ -269,8 +295,8 @@ button {
   background-color: #E9D8A6;
   border: black solid 2px;
   border-radius: 50%;
-  width: clamp(3.3rem, 6vw, 5rem);
-  height: clamp(3.3rem, 6vw, 5rem);
+  width: clamp(3.3rem, 5vw, 5rem);
+  height: clamp(3.3rem, 5vw, 5rem);
 }
 
 .red {
@@ -352,7 +378,7 @@ button {
   padding: 2rem;
   border-radius: 1.5rem;
 
-  background-color: #124559;
+  background-color: var(--secondary);
 }
 
 .playerIndicater {
@@ -361,7 +387,7 @@ button {
   align-items: center;
   gap: 3rem;
   padding: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
 
   position: relative;
 
@@ -416,7 +442,7 @@ button {
 
   height: 50vh;
   width: 50vw;
-  background-color: #94d2bd;
+  background-color: var(--secondary);
   border-radius: 4rem;
 
   position: relative;
@@ -485,6 +511,48 @@ button {
 .level-btn:hover span {
   opacity: 1;
   margin: 0 1rem;
+}
+
+@media(width<750px) {
+
+  .burger-container{
+    pointer-events: auto;
+  }
+
+  .burger.active,
+  .pizza.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .links{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    width: 90vw;
+    background-color: var(--secondary);
+    border-radius: 2rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .links.active{
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .links a{
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+  }
 }
 
 @media(width<650px) {
