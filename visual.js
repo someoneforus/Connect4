@@ -68,7 +68,6 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
 
             entry.target.classList.add('introFallAnimation');
-            console.log('animating')
 
             entry.target.addEventListener('animationend', () => {
                 entry.target.classList.remove('introFallAnimation');
@@ -86,7 +85,6 @@ burger.addEventListener('click',()=>{
     pizza.classList.add('active')
     links.classList.add('active')
     burger.classList.remove('active')
-    console.log('burger clicked')
 });
 
 pizza.addEventListener('click',()=>{
@@ -94,5 +92,3 @@ pizza.addEventListener('click',()=>{
     links.classList.remove('active')
     pizza.classList.remove('active')
 });
-
-console.log(burger,pizza,links)

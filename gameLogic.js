@@ -102,7 +102,6 @@ function placer(event) {
     let landingRow = dropPiece(col, currentPlayer)
 
     if (landingRow === null) {
-        /* add shake animation */
         alert('this colomn is full')
         return;
     }

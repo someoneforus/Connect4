@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500&display=swap');
+
 :root {
   --bg-primary: #001219;
   --bg-secondary: #1a233a;
@@ -12,24 +13,24 @@
   --accent: #E9D8A6;
   --accent-yellow: #EE9B00;
   --accent-red: #AE2012;
-  --italian-red:#CE2B37;
-  --italian-green:#009246;
-  --italian-white:#F1F2F1;
-  --color-basil-green: #2C5E3B;    
-  --color-mozzarella: #FDFBF7;     
-  --color-tomato-red: #D32F2F;     
-  --color-espresso: #2B1E16;       
+  --italian-red: #CE2B37;
+  --italian-green: #009246;
+  --italian-white: #F1F2F1;
+  --color-basil-green: #2C5E3B;
+  --color-mozzarella: #FDFBF7;
+  --color-tomato-red: #D32F2F;
+  --color-espresso: #2B1E16;
   --color-mascarpone: #F4E8C1;
-  --color-ladyfinger: #D2A26D;     
-  --color-crust-gold: #E29543;    
-  --color-cocoa: #5C4033;          
-  --color-text-muted: #59524C;     
+  --color-ladyfinger: #D2A26D;
+  --color-crust-gold: #E29543;
+  --color-cocoa: #5C4033;
+  --color-text-muted: #59524C;
   --color-border: #E6DFD5;
 
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -228,8 +229,8 @@ button {
   justify-content: center;
 }
 
-main .hero{
-/*   background-color: #adb5bd; */
+main .hero {
+  /*   background-color: #adb5bd; */
   min-height: unset;
   height: calc(100vh - 93px);
 }
@@ -470,9 +471,9 @@ main .hero{
   align-items: center;
   gap: 2rem;
 
-  width:  clamp(20rem,50vw,56.25rem);
-  height: clamp(20rem,50vh,27.3rem);
-  
+  width: clamp(20rem, 50vw, 56.25rem);
+  height: clamp(20rem, 50vh, 27.3rem);
+
   background-color: var(--secondary);
   border-radius: 4rem;
 
@@ -546,7 +547,7 @@ main .hero{
 
 /* Italy --> */
 
-.heroItaly{
+.heroItaly {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -554,61 +555,65 @@ main .hero{
   height: calc(100vh - 92px);
 }
 
-.heroItaly-container{
+.heroItaly-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-.heroItaly h1{
-  font-family: 'Playfair Display',serif;
-  font-size: clamp(3rem,5vw,7rem);
+.heroItaly h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5vw, 7rem);
 }
 
-.itGreen{
+.itGreen {
   color: var(--italian-green);
 }
 
-.itRed{
+.itRed {
   color: var(--italian-red);
 }
 
-.itWhite{
+.itWhite {
   color: var(--italian-white);
 }
 
-.itCards-container{
+.itCards-container {
   display: flex;
   gap: 1rem;
 }
 
-.itCards{
-  width: 20rem;
+.itCards {
+  width: clamp(11rem, 20vw, 25rem);
   text-align: center;
   background-color: var(--accent);
   padding: 0.5rem;
   transition: scale 0.5s ease-in-out;
+
+  font-family: 'Playfair Display';
 }
 
-.italyCard{
+.italyCard {
   color: var(--color-basil-green);
 }
 
-.neapolitanCard{
+.neapolitanCard {
   color: var(--italian-red);
 }
 
-.tiramisuCard{
+.tiramisuCard {
   color: var(--color-cocoa);
 }
 
-.itCards:hover{
+.itCards:hover {
   cursor: pointer;
   scale: 1.1;
 }
 
-#italy,#neapolitan,#tiramisu{
+#italy,
+#neapolitan,
+#tiramisu {
   height: 100vh;
 
   display: flex;
@@ -616,70 +621,85 @@ main .hero{
   align-items: center;
 }
 
-#italy{
+#italy {
   background-color: var(--color-crust-gold);
 }
 
-#neapolitan{
+#neapolitan {
   background-color: var(--color-tomato-red);
 }
 
-#tiramisu{
+#tiramisu {
   background-color: var(--color-ladyfinger);
 }
 
+.italy-container,
+.neapolitan-container,
+.tiramisu-container {
+  width: clamp(800px, 85vw, 1200px);
+}
+
+
+.italy-container>*,
+.neapolitan-container>*,
+.tiramisu-container>* {
+  padding: clamp(0.5rem, 1vw, 2rem);
+}
 
 /* ItalySection --> */
 
-.italy-container{
+.italy-container {
   display: flex;
-  gap: 3rem;
-  max-width: 1200px;
+  gap: clamp(1.5rem, 3vw, 3rem);
 }
 
-.italyLeft{
+.italyLeft {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
   width: 30rem;
 }
-.itImg{
+
+.itImg {
   border-radius: 1rem;
   transform: translateX(-100vw);
   transition: scale ease-out 0.5s, transform 1s ease-in-out;
 }
 
-.itImg.active{
+.itImg.active {
   transform: translateX(0);
 }
 
 
-.itImg:hover{
+.itImg:hover {
   scale: 1.1;
 }
 
-.italyRight{
+.italyRight {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 2rem;
   gap: 2rem;
-
 }
 
-.italyRight h2,.neapolitanLeft h2,.tiramisuTop h2{
+.italyRight h2,
+.neapolitanLeft h2,
+.tiramisuTop h2 {
   font-family: 'Playfair Display';
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 5px;
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
 }
-.italyRight p,.neapolitanLeft p, .tiramisuTop p{
-  font-family: 'Inter',sans-serif;
-  font-size: 1.2rem;
+
+.italyRight p,
+.neapolitanLeft p,
+.tiramisuTop p {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
   line-height: 2rem;
 }
 
@@ -687,31 +707,32 @@ main .hero{
 
 /* Pizza section --> */
 
-#neapolitan{
+#neapolitan {
   overflow: hidden;
 }
 
-.neapolitan-container{
+.neapolitan-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  max-width: 1200px;
+
 }
 
-.neapolitanLeft{
+.neapolitanLeft {
   flex: 1;
 }
-.neapolitanRight{
+
+.neapolitanRight {
   flex: 1;
   position: relative;
 }
 
-.neapolitanRight img{
+.neapolitanRight img {
   transform: translateX(100vw) rotate(360deg);
 }
 
-.neapolitanRight .itImg.active{
+.neapolitanRight .itImg.active {
   transform: translate(0) rotate(0);
 }
 
@@ -719,7 +740,11 @@ main .hero{
 
 /* Tiramisu section --> */
 
-.tiramisu-container{
+#tiramisu{
+  overflow: hidden;
+}
+
+.tiramisu-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -727,23 +752,22 @@ main .hero{
   gap: 2rem;
 }
 
-
-.tiramisuTop{
-margin-top: 2rem;
+.tiramisuTop {
+  margin-top: 2rem;
   text-align: center;
 }
 
-.tiramisuBottom img{
+.tiramisuBottom img {
   width: 37rem;
   aspect-ratio: 16/9;
 }
 
-.tiramisuBottom img{
+.tiramisuBottom img {
   transform: translateX(0);
   transform: translateY(100vh);
 }
 
-.tiramisuBottom .itImg.active{
+.tiramisuBottom .itImg.active {
   transform: translateY(0);
 }
 
@@ -751,8 +775,32 @@ margin-top: 2rem;
 
 /* <-- Italy */
 
-@media(width>1000px){
-  #closeBtn{
+footer{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100vw;
+  height: 3rem;
+
+  background-color: #606c38;
+}
+
+footer a{
+  text-decoration: none;
+  color: var(--color-mascarpone);
+  transition: scale 0.3s ease-out;
+}
+
+footer a:hover{
+  scale: 1.1;
+}
+
+footer>*{
+  margin-right: 2rem;
+}
+
+@media(width>1000px) {
+  #closeBtn {
     left: 87%;
   }
 }
@@ -766,8 +814,81 @@ margin-top: 2rem;
     flex-direction: row;
   }
 
-  #closeBtn{
+  #closeBtn {
     left: 80%;
+  }
+
+  .itCards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tiramisuCard {
+    justify-self: center;
+    grid-column: 1/span 2;
+  }
+
+  .italy-container,
+  .neapolitan-container,
+  .tiramisu-container {
+    max-width: 90vw;
+  }
+
+  .italy-container {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .italyLeft {
+    width: clamp(30rem, 90vw, 50rem);
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .italyLeft img {
+    aspect-ratio: 9/16;
+  }
+
+  .italyRight h2 {
+    font-size: 3rem;
+  }
+
+  #neapolitan {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(./images/neapolitan2.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .neapolitanLeft {
+    text-align: center;
+
+  }
+
+  .neapolitanLeft h2,
+  .neapolitanLeft p {
+    color: var(--color-mozzarella);
+  }
+
+  .neapolitanRight {
+    display: none;
+  }
+
+  #tiramisu {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(./images/tiramisu3.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .tiramisuTop h2,
+  .tiramisuTop p {
+    color: var(--color-mascarpone);
+  }
+
+  .tiramisuBottom {
+    display: none;
   }
 }
 
@@ -817,5 +938,22 @@ margin-top: 2rem;
   .tile {
     width: clamp(2.3rem, 10vw, 3.3rem);
     height: clamp(2.3rem, 10vw, 3.3rem);
+  }
+}
+
+@media(width<600px) {
+  #italy {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(./images/venice.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .italyLeft {
+    display: none;
+  }
+
+  .italyRight h2, .italyRight p{
+    color: var(--color-mozzarella);
   }
 }
