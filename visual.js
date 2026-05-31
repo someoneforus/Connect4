@@ -75,7 +75,7 @@ const observer = new IntersectionObserver((entries) => {
                 observer.observe(entry.target);
             }, { once: true })
         }
-    })
+    });
 });
 
 animatedTiles.forEach((tile) => {

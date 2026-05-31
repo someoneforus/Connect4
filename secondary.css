@@ -7,10 +7,6 @@
     --logo-text: #94D2BD;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 section {
     width: 100%;
     margin: 0 auto;

@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500&display=swap');
 :root {
   --bg-primary: #001219;
   --bg-secondary: #1a233a;
@@ -12,6 +12,24 @@
   --accent: #E9D8A6;
   --accent-yellow: #EE9B00;
   --accent-red: #AE2012;
+  --italian-red:#CE2B37;
+  --italian-green:#009246;
+  --italian-white:#F1F2F1;
+  --color-basil-green: #2C5E3B;    
+  --color-mozzarella: #FDFBF7;     
+  --color-tomato-red: #D32F2F;     
+  --color-espresso: #2B1E16;       
+  --color-mascarpone: #F4E8C1;
+  --color-ladyfinger: #D2A26D;     
+  --color-crust-gold: #E29543;    
+  --color-cocoa: #5C4033;          
+  --color-text-muted: #59524C;     
+  --color-border: #E6DFD5;
+
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 * {
@@ -32,6 +50,8 @@ body {
 img {
   display: block;
   max-width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 
@@ -523,6 +543,213 @@ main .hero{
   opacity: 1;
   margin: 0 1rem;
 }
+
+/* Italy --> */
+
+.heroItaly{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100vh - 92px);
+}
+
+.heroItaly-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.heroItaly h1{
+  font-family: 'Playfair Display',serif;
+  font-size: clamp(3rem,5vw,7rem);
+}
+
+.itGreen{
+  color: var(--italian-green);
+}
+
+.itRed{
+  color: var(--italian-red);
+}
+
+.itWhite{
+  color: var(--italian-white);
+}
+
+.itCards-container{
+  display: flex;
+  gap: 1rem;
+}
+
+.itCards{
+  width: 20rem;
+  text-align: center;
+  background-color: var(--accent);
+  padding: 0.5rem;
+  transition: scale 0.5s ease-in-out;
+}
+
+.italyCard{
+  color: var(--color-basil-green);
+}
+
+.neapolitanCard{
+  color: var(--italian-red);
+}
+
+.tiramisuCard{
+  color: var(--color-cocoa);
+}
+
+.itCards:hover{
+  cursor: pointer;
+  scale: 1.1;
+}
+
+#italy,#neapolitan,#tiramisu{
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#italy{
+  background-color: var(--color-crust-gold);
+}
+
+#neapolitan{
+  background-color: var(--color-tomato-red);
+}
+
+#tiramisu{
+  background-color: var(--color-ladyfinger);
+}
+
+
+/* ItalySection --> */
+
+.italy-container{
+  display: flex;
+  gap: 3rem;
+  max-width: 1200px;
+}
+
+.italyLeft{
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 0.5rem;
+  width: 30rem;
+}
+.itImg{
+  border-radius: 1rem;
+  transform: translateX(-100vw);
+  transition: scale ease-out 0.5s, transform 1s ease-in-out;
+}
+
+.itImg.active{
+  transform: translateX(0);
+}
+
+
+.itImg:hover{
+  scale: 1.1;
+}
+
+.italyRight{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+
+}
+
+.italyRight h2,.neapolitanLeft h2,.tiramisuTop h2{
+  font-family: 'Playfair Display';
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 5px;
+  font-size: 3rem;
+}
+.italyRight p,.neapolitanLeft p, .tiramisuTop p{
+  font-family: 'Inter',sans-serif;
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
+
+/* <-- ItalySection */
+
+/* Pizza section --> */
+
+#neapolitan{
+  overflow: hidden;
+}
+
+.neapolitan-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1200px;
+}
+
+.neapolitanLeft{
+  flex: 1;
+}
+.neapolitanRight{
+  flex: 1;
+  position: relative;
+}
+
+.neapolitanRight img{
+  transform: translateX(100vw) rotate(360deg);
+}
+
+.neapolitanRight .itImg.active{
+  transform: translate(0) rotate(0);
+}
+
+/* <-- Pizza section */
+
+/* Tiramisu section --> */
+
+.tiramisu-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+
+.tiramisuTop{
+margin-top: 2rem;
+  text-align: center;
+}
+
+.tiramisuBottom img{
+  width: 37rem;
+  aspect-ratio: 16/9;
+}
+
+.tiramisuBottom img{
+  transform: translateX(0);
+  transform: translateY(100vh);
+}
+
+.tiramisuBottom .itImg.active{
+  transform: translateY(0);
+}
+
+/* <-- Tiramisu section */
+
+/* <-- Italy */
 
 @media(width>1000px){
   #closeBtn{
