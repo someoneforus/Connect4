@@ -34,12 +34,6 @@ img {
   max-width: 100%;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 
 .main-content {
   flex-grow: 1;
@@ -47,7 +41,7 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
   position: relative;
 }
 
@@ -214,6 +208,12 @@ button {
   justify-content: center;
 }
 
+main .hero{
+/*   background-color: #adb5bd; */
+  min-height: unset;
+  height: calc(100vh - 93px);
+}
+
 #heroTile {
   width: 2.5rem;
   height: 2.5rem;
@@ -228,6 +228,15 @@ button {
 
 /* <-- Copy from main */
 
+.gamemode-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 
 .hero h1 {
   font-size: 4.5rem;
@@ -375,7 +384,7 @@ button {
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: clamp(0.8rem, 2vw, 2rem);
   border-radius: 1.5rem;
 
   background-color: var(--secondary);
@@ -386,7 +395,7 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 3rem;
-  padding: 1rem;
+  padding: clamp(0.65rem, 1.2vw, 1rem);
   border-radius: 1rem;
 
   position: relative;
@@ -396,11 +405,12 @@ button {
 
 .playerIndicater h2 {
   color: #faf0ca;
+  font-size: clamp(2rem, 3vw, 3.1rem);
 }
 
 .slider {
-  width: 3rem;
-  height: 0.75rem;
+  width: clamp(2rem, 3vw, 3.2rem);
+  height: clamp(0.5rem, 0.75vw, 0.75rem);
   border-radius: 1rem;
   background-color: #AE2012;
 
@@ -440,8 +450,9 @@ button {
   align-items: center;
   gap: 2rem;
 
-  height: 50vh;
-  width: 50vw;
+  width:  clamp(20rem,50vw,56.25rem);
+  height: clamp(20rem,50vh,27.3rem);
+  
   background-color: var(--secondary);
   border-radius: 4rem;
 
@@ -451,7 +462,7 @@ button {
 #closeBtn {
   position: absolute;
   top: 10%;
-  left: 85%;
+  left: 83%;
 
   background: none;
   border: none;
@@ -513,9 +524,29 @@ button {
   margin: 0 1rem;
 }
 
+@media(width>1000px){
+  #closeBtn{
+    left: 87%;
+  }
+}
+
+@media (width<800px) {
+  .game-container {
+    flex-direction: column-reverse;
+  }
+
+  .info-container.visible {
+    flex-direction: row;
+  }
+
+  #closeBtn{
+    left: 80%;
+  }
+}
+
 @media(width<750px) {
 
-  .burger-container{
+  .burger-container {
     pointer-events: auto;
   }
 
@@ -525,7 +556,7 @@ button {
     pointer-events: auto;
   }
 
-  .links{
+  .links {
     position: absolute;
     top: 100%;
     left: 0;
@@ -544,12 +575,12 @@ button {
     transition: opacity 0.5s ease-in-out;
   }
 
-  .links.active{
+  .links.active {
     pointer-events: auto;
     opacity: 1;
   }
 
-  .links a{
+  .links a {
     padding: 0.5rem;
     margin-bottom: 1rem;
   }
@@ -557,7 +588,7 @@ button {
 
 @media(width<650px) {
   .tile {
-    width: clamp(2.3rem, 7vw, 3.3rem);
-    height: clamp(2.3rem, 7vw, 3.3rem);
+    width: clamp(2.3rem, 10vw, 3.3rem);
+    height: clamp(2.3rem, 10vw, 3.3rem);
   }
 }
